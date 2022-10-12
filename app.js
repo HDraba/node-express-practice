@@ -1,28 +1,20 @@
-const path = require('path')
+const path = require('path');
 
-const express = require('express')
-const bodyParser = require('body-parser')
+const express = require('express');
+const bodyParser = require('body-parser');
 
-const app = express()
+const app = express();
 
 // for CSS
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routing
-const birds = require('./routes/birds')
+const main = require('./routes/main');
+const party = require('./routes/party');
+const birds = require('./routes/birds');
 
-app.get('/', (request, response, next) => {
-    response.sendFile(path.join(__dirname, 'views', ))
-    console.log('empty - first page')
-})
-app.get('/party', (request, response, next) => {
-    response.sendFile(path.join(__dirname, 'views', ))
-    
-    console.log('still empty - second page')
+app.get('/', main);
+app.get('/party', party);
+app.get('/birds', birds);
 
-})
-
-app.get('/birds', birds)
-
-
-app.listen(3000)
+app.listen(3000);
