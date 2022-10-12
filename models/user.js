@@ -20,7 +20,7 @@ module.exports = class User {
       }
       users.push(this); // pushing this instance of the class
       fs.writeFile(dataPath, JSON.stringify(users), (err) => {
-        console.log('err');
+        console.log(err);
       });
     });
   }

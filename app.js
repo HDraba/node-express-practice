@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-// app.set('viw engine', 'ejs')
-// app.set('views', 'views')
+app.set('viw engine', 'ejs')
+app.set('views', 'views')
 
 app.use(bodyParser.urlencoded({ extended: false }));
 

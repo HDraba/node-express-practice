@@ -19,6 +19,7 @@
   "homepage": "https://github.com/HDraba/node-express-practice#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "ejs": "^3.1.8",
     "express": "^4.16.3"
   },
   "devDependencies": {
