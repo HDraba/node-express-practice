@@ -11,15 +11,32 @@
     <header class="main-header">
       <nav class="main-header__nav">
         <ul class="main-header__item-list">
-          <li class="main-header__item"><a href="/">Main</a></li>
-          <li class="main-header__item"><a class="active" href="/user">User</a></li>
+          <li class="main-header__item"><a href="/main">Main</a></li>
+          <li class="main-header__item">
+            <a class="active" href="/user">User</a>
+          </li>
           <li class="main-header__item"><a href="/birds">Birds</a></li>
         </ul>
       </nav>
     </header>
     <main>
-        <h2>Users list</h2>
-        <ul class="main-user__list"></ul>
+      <h2>Users list</h2>
+      <% if (users.length === 0) {%>
+        <h3>no users registered</h3>
+      <% } %> 
+      <% if (users.length > 0) {%>
+        <ul class="main-user__list">
+          <% for (let user of users) { %>
+          <!-- for of loop for users array -->
+          <li>
+            <h2>Hello <%= user.name %></h2>
+            <div>
+              <p>Age: <%= user.age %></p>
+            </div>
+          </li>
+          <% } %>
+        </ul>
+      <% } %>
     </main>
   </body>
 </html>

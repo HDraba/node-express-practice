@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // for CSS
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(main);
+app.use('/main', main);
 app.use('/user', user);
 app.use('/birds', birds);
 app.use((req, res, next) => {

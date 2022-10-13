@@ -8,18 +8,10 @@ exports.createUser = (req, res, next) => {
 };
 
 exports.getUsers = (req, res, next) => {
-  res.render('user', { pageTitle: 'user' });
-  // User.fetchAll(() => {
-    // console.log(products);
-  // });
+  User.fetchAll((users) => {
+    res.render('user', { 
+      users, 
+      pageTitle: 'User' 
+    });
+  });
 };
-
-exports.getUser = (req, res, next) => {
-  console.log('getUser hallo')
-  res.render('user', { pageTitle: 'user' });
-  
-  // User.fetchAll(() => {
-    // console.log(products);
-  // });
-};
-

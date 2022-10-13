@@ -1,11 +1,10 @@
 const path = require('path');
 const express = require('express');
 
+const mainController = require('../controllers/main');
+
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '../views', '/main.html'));
-  console.log('Hello Main');
-});
+router.get('/', mainController.renderMain);
 
 module.exports = router;
