@@ -27,7 +27,7 @@ module.exports = class User {
 
   static fetchAll(cb) {
     const dataPath = path.join(
-      path.dirname(process.mainModule.filename),
+      path.dirname(require.main.filename),
       'data',
       'users.json'
     );
