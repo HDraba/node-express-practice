@@ -1,18 +1,29 @@
 const fs = require('fs');
 const path = require('path');
 
+const dataPath = path.join(
+  path.dirname(process.mainModule.filename),
+  'data',
+  'users.json'
+);
+const getUsersFromFile = (cb) => {
+  fs.readFile(dataPath, (err, fileContent) => {
+    if (err) {
+      cb([]);
+    } else {
+      cb(JSON.parse(fileContent));
+    }
+  });
+};
+
 module.exports = class User {
+  id = Math.random();
   constructor(name, age) {
     this.name = name;
     this.age = age;
   }
 
   save() {
-    const dataPath = path.join(
-      path.dirname(process.mainModule.filename),
-      'data',
-      'users.json'
-    );
     fs.readFile(dataPath, (err, fileContent) => {
       let users = [];
       if (!err) {
@@ -36,6 +47,14 @@ module.exports = class User {
         cb([]);
       }
       cb(JSON.parse(fileContent));
+    });
+  }
+
+  static findById(id, cb) {
+    getUsersFromFile((users) => {
+      const user = users.find((p) => p.id === id);
+      console.log(users);
+      // cb(user);
     });
   }
 };

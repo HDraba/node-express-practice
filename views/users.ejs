@@ -8,17 +8,8 @@
     <link rel="stylesheet" href="nav.css" />
   </head>
   <body>
-    <header class="main-header">
-      <nav class="main-header__nav">
-        <ul class="main-header__item-list">
-          <li class="main-header__item"><a href="/main">Main</a></li>
-          <li class="main-header__item">
-            <a class="active" href="/user">User</a>
-          </li>
-          <li class="main-header__item"><a href="/birds">Birds</a></li>
-        </ul>
-      </nav>
-    </header>
+    <%- include('./includes/nav.ejs')%>
+
     <main>
       <h2>Users list</h2>
       <% if (users.length === 0) {%>
@@ -33,6 +24,9 @@
             <div>
               <p>Age: <%= user.age %></p>
             </div>
+            <!-- <a href="/users/details">Details</a> -->
+            
+            <a href="/users/details/<%=user.id%>">Details</a>
           </li>
           <% } %>
         </ul>

@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 
 // routing
 const main = require('./routes/main');
-const user = require('./routes/user');
+const users = require('./routes/users');
 const birds = require('./routes/birds');
 
 const app = express();
@@ -18,8 +18,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/main', main);
-app.use('/user', user);
+app.use('/users', users);
 app.use('/birds', birds);
+
 app.use((req, res, next) => {
   res.status(404).send('<h1>your princess is in another castle - 404 page not found</h1>');
 });

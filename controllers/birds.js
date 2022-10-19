@@ -1,3 +1,4 @@
+
 exports.renderBirds = (req, res, next) => {
-  res.render('birds', { pageTitle: 'BIRDS' });
+  res.render('birds', { pageTitle: 'BIRDS', path: '/birds' });
 };
