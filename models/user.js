@@ -39,6 +39,7 @@ module.exports = class User {
 
   static findById(id, cb) {
     getUsersFromFile(users => {
+      console.log();
       const user = users.find(u => u.id === id);  
       cb(user);
     });
