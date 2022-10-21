@@ -40,7 +40,7 @@ exports.getEditUser = (req, res, next) => {
 };
 
 exports.postEditUsers = (req, res, next) => {
-  // console.log('request body: ', req.body);
+  console.log('request body: ', req.body);
   const userId = req.body.userId;
   const userName = req.body.name;
   const userAge = req.body.age;

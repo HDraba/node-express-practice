@@ -27,19 +27,19 @@ module.exports = class User {
   save() {
     getUsersFromFile((users) => {
       if (this.id) {
-        const existingUserIndex = users.findIndex((user) => {
-          user.id === this.id;
-        });
-        
+        const existingUserIndex = users.findIndex(
+          (user) => user.id === this.id
+        );
+
         const updatedUsers = [...users];
         updatedUsers[existingUserIndex] = this;
-        console.log(this);
-        console.log(updatedUsers);
+        // console.log(this);
+        // console.log(updatedUsers);
         fs.writeFile(dataPath, JSON.stringify(updatedUsers), (err) =>
           console.log(err)
         );
       } else {
-        console.log('here 2');
+        // console.log('here 2');
         this.id = Math.random().toString();
         users.push(this);
         fs.writeFile(dataPath, JSON.stringify(users), (err) => {

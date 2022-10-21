@@ -10,6 +10,6 @@ router.get('/', usersController.getUsers)
 // router.get('/details', usersController.getUser)
 router.get('/details/:userId', usersController.getUser)
 
-router.post('/edit', usersController.postEditUsers) 
 router.get('/edit/:userId', usersController.getEditUser)
+router.post('/edit', usersController.postEditUsers) 
 module.exports = router
