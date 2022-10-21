@@ -24,9 +24,9 @@
             <div>
               <p>Age: <%= user.age %></p>
             </div>
-            <!-- <a href="/users/details">Details</a> -->
             
             <a href="/users/details/<%=user.id%>">Details</a>
+            <a href="/users/edit/<%=user.id%>">Edit</a>
           </li>
           <% } %>
         </ul>

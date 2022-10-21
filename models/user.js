@@ -18,18 +18,34 @@ const getUsersFromFile = (cb) => {
 };
 
 module.exports = class User {
-  constructor(name, age) {
+  constructor(id, name, age) {
+    this.id = id;
     this.name = name;
     this.age = age;
   }
 
   save() {
-    this.id = Math.random().toString();
     getUsersFromFile((users) => {
-      users.push(this);
-      fs.writeFile(dataPath, JSON.stringify(users), (err) => {
-        console.log('Error: ', err);
-      });
+      if (this.id) {
+        const existingUserIndex = users.findIndex((user) => {
+          user.id === this.id;
+        });
+        
+        const updatedUsers = [...users];
+        updatedUsers[existingUserIndex] = this;
+        console.log(this);
+        console.log(updatedUsers);
+        fs.writeFile(dataPath, JSON.stringify(updatedUsers), (err) =>
+          console.log(err)
+        );
+      } else {
+        console.log('here 2');
+        this.id = Math.random().toString();
+        users.push(this);
+        fs.writeFile(dataPath, JSON.stringify(users), (err) => {
+          console.log('Error: ', err);
+        });
+      }
     });
   }
 
@@ -38,9 +54,9 @@ module.exports = class User {
   }
 
   static findById(id, cb) {
-    getUsersFromFile(users => {
+    getUsersFromFile((users) => {
       console.log();
-      const user = users.find(u => u.id === id);  
+      const user = users.find((u) => u.id === id);
       cb(user);
     });
   }
